@@ -2,53 +2,49 @@
 
 class Complex
 {
-    public int real, imag;
+    int real;
+    int imaginary;
 
     // Constructor
-    public Complex(int r, int i)
+    public Complex(int real, int imaginary)
     {
-        real = r;
-        imag = i;
+        this.real = real;
+        this.imaginary = imaginary;
     }
 
-    // Operator Overloading (+)
+    // Operator Overloading
     public static Complex operator +(Complex c1, Complex c2)
     {
-        return new Complex(c1.real + c2.real, c1.imag + c2.imag);
+        return new Complex(c1.real + c2.real,
+                           c1.imaginary + c2.imaginary);
     }
 
     // Method Overloading
-    public void Add(int a, int b)
-    {
-        Console.WriteLine("Sum (int): " + (a + b));
-    }
-
-    public void Add(double a, double b)
-    {
-        Console.WriteLine("Sum (double): " + (a + b));
-    }
-
-    // Display
     public void Display()
     {
-        Console.WriteLine(real + " + " + imag + "i");
+        Console.WriteLine("Complex Number: " + real + " + " + imaginary + "i");
+    }
+
+    public void Display(string message)
+    {
+        Console.WriteLine(message + " " + real + " + " + imaginary + "i");
     }
 }
 
 // Dynamic Binding Example
-class BaseClass
+class Animal
 {
-    public virtual void Show()
+    public virtual void Sound()
     {
-        Console.WriteLine("Base Class Method");
+        Console.WriteLine("Animal makes sound");
     }
 }
 
-class DerivedClass : BaseClass
+class Dog : Animal
 {
-    public override void Show()
+    public override void Sound()
     {
-        Console.WriteLine("Derived Class Method");
+        Console.WriteLine("Dog barks");
     }
 }
 
@@ -56,22 +52,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Operator Overloading
-        Complex c1 = new Complex(6, 2);
-        Complex c2 = new Complex(4, 5);
+        Console.WriteLine("Program by Krishal Shrestha");
 
+        // Creating objects
+        Complex c1 = new Complex(2, 6);
+        Complex c2 = new Complex(3, 5);
+
+        // Using overloaded + operator
         Complex c3 = c1 + c2;
 
-        Console.WriteLine("Complex Addition:");
+        // Calling overloaded methods
         c3.Display();
-
-        // Method Overloading
-        c1.Add(10, 20);
-        c1.Add(5.5, 2.5);
+        c3.Display("Result is:");
 
         // Dynamic Binding
-        BaseClass obj = new DerivedClass();
-        obj.Show();
+        Animal a = new Dog();
+        a.Sound();
 
         Console.ReadLine();
     }
