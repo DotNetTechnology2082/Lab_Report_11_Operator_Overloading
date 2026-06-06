@@ -31,7 +31,7 @@ class Complex
     // Display
     public void Display()
     {
-        Console.WriteLine(real + " + " + imag + "i");
+        Console.WriteLine("Complex Number: " + real + " + " + imag + "i");
     }
 }
 
@@ -40,7 +40,7 @@ class BaseClass
 {
     public virtual void Show()
     {
-        Console.WriteLine("Base Class Method");
+        Console.WriteLine("Animal sound");
     }
 }
 
@@ -48,7 +48,7 @@ class DerivedClass : BaseClass
 {
     public override void Show()
     {
-        Console.WriteLine("Derived Class Method");
+        Console.WriteLine("Dog barks");
     }
 }
 
@@ -56,18 +56,17 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("Program by Rahul");
+
         // Operator Overloading
-        Complex c1 = new Complex(6, 2);
-        Complex c2 = new Complex(4, 5);
+        Complex c1 = new Complex(3, 4);
+        Complex c2 = new Complex(5, 6);
 
         Complex c3 = c1 + c2;
 
-        Console.WriteLine("Complex Addition:");
         c3.Display();
 
-        // Method Overloading
-        c1.Add(10, 20);
-        c1.Add(5.5, 2.5);
+        Console.WriteLine("Result is: " + c3.real + " + " + c3.imag + "i");
 
         // Dynamic Binding
         BaseClass obj = new DerivedClass();
